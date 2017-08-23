@@ -1,0 +1,37 @@
+{
+  "name": "Twilio Real-Time TaskRouter Dashboard",
+  "description": "Real-time TaskRouter statistics dashboard using Sync",
+  "repository": "https://github.com/ameerbadri/twilio-taskrouter-realtime-dashboard",
+  "logo": "https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png",
+  "keywords": ["python", "twilio", "taskrouter", "statistics", "dashboard"],
+  "env": {
+  "TWILIO_ACCOUNT_SID": {
+    "description": "Your Twilio Account SID",
+    "value": "your_twilio_account_sid"
+  },
+  "TWILIO_AUTH_TOKEN": {
+    "description": "Your Twilio Auth Token",
+    "value": "your_twilio_auth_token"
+  },
+  "TWILIO_API_KEY": {
+    "description": "Your Twilio API Key",
+    "value": "your_twilio_api_key"
+  },
+  "TWILIO_API_SECRET": {
+    "description": "Your Twilio API Secret",
+    "value": "your_twilio_api_secret"
+  },
+  "TWILIO_SYNC_SERVICE_ID": {
+    "description": "Your Twilio Sync Service ID",
+    "value": "your_twilio_sync_service_id"
+  },
+  "TWILIO_WORKSPACE_SID": {
+    "description": "Your Twilio TaskRouter Workspace SID",
+    "value": "your_twilio_taskrouter_workspace_sid"
+  },
+  "TWILIO_WORKFLOW_SID": {
+    "description": "Your Twilio TaskRouter Workflow SID",
+    "value": "your_twilio_taskrouter_workflow_sid"
+  }
+ }
+}
