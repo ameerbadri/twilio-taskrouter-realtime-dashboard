@@ -42,7 +42,9 @@ Make a note of the URL that Heroku created for your app as you'll need it for th
 3) Select the "Callback Events" as selected below
 4) Specify the "Event Callback URL" as https://<YOUR_HEROKU_APP_URL>/taskrouter_event
 5) Save the changes
+
 ![](taskrouter_workspace_event_url_setup.jpg)
 
 Now, Navigate to https://<YOUR_HEROKU_APP_URL>/taskrouter_dashboard.html
+
 As events are generated in your TaskRouter workspace, the dashboard will display key metrics.
