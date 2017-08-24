@@ -9,9 +9,9 @@ This demo shows how an operational monitoring dashboard could be built.  I've us
 2) Twilio Sync (https://www.twilio.com/sync)
 3) Server side app using Python and Twilio REST APIs (TaskRouter, Sync)
 4) Dashboard app components:
-  4.1) Javascript framework Vue.js (https://vuejs.org)
-  4.2) UI framework Semantic-ui (https://semantic-ui.com)
-  4.3) Twilio Sync JS SDK (https://www.twilio.com/docs/api/sync/quickstart-js)
+4.1) Javascript framework Vue.js (https://vuejs.org)
+4.2) UI framework Semantic-ui (https://semantic-ui.com)
+4.3) Twilio Sync JS SDK (https://www.twilio.com/docs/api/sync/quickstart-js)
 
 ## Data flow
 1) TaskRouter generates the event and calls the Event Callback URL associated with the workspace
