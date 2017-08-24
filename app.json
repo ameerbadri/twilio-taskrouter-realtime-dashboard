@@ -27,11 +27,11 @@
   },
   "TWILIO_WORKSPACE_SID": {
     "description": "Your Twilio TaskRouter Workspace SID",
-    "value": "twilio_taskrouter_workspace_sid"
+    "value": "twilio_workspace_sid"
   },
   "TWILIO_WORKFLOW_SID": {
     "description": "Your Twilio TaskRouter Workflow SID",
-    "value": "twilio_taskrouter_workflow_sid"
+    "value": "twilio_workflow_sid"
   }
  }
 }
