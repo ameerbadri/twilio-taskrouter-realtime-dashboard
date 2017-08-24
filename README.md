@@ -19,7 +19,6 @@ This demo shows how an operational monitoring dashboard could be built.  I've us
 3) Next, the Sync documents are updated with changes using the Sync REST APIs
 4) The frontend web app subscribes to the same Sync documents for changes vis the Sync JS SDK
 5) When changes are detected by the frontend, the UI is updated
-6) All the changes happen in near realtime!
 
 ![](taskrouter_dashboard.jpg)
 
