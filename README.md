@@ -35,8 +35,8 @@ This will install the web application and all the dependencies on Heroku (login 
 
 Make a note of the URL that Heroku created for your app as you'll need it for the next Step
 
-## Step 2: Configuring Taskrouter Workspace
-1) In your Twilio console (login requried), go to your TaskRouter workspaces (https://www.twilio.com/console/taskrouter/workspaces/)
+## Step 2: Configuring TaskRouter Workspace
+1) In your Twilio console (login required), go to your TaskRouter workspaces (https://www.twilio.com/console/taskrouter/workspaces/)
 2) Select the correct workspace and click on "Settings" (https://www.twilio.com/console/taskrouter/workspaces/<WORKSPACE_SID/settings)
 3) Select the "Callback Events" as selected below
 4) Specify the "Event Callback URL" as https://<YOUR_HEROKU_APP_URL>/taskrouter_event
