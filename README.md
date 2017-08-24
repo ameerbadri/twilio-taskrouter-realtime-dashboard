@@ -46,4 +46,4 @@ Make a note of the URL that Heroku created for your app as you'll need it for th
 
 Now, Navigate to https://<YOUR_HEROKU_APP_URL>/taskrouter_dashboard.html
 
-As events are generated in your TaskRouter workspace, the dashboard will display key metrics.
+As events are generated in your TaskRouter workspace the dashboard will display key metrics.
