@@ -1,14 +1,14 @@
-# Twilio TaskRouter Realtime Dashboard using Twilio Sync
+# Twilio TaskRouter Realtime Dashboard using Sync
 
 In a modern contact center that serves customers over multiple channels, realtime monitoring of the tasks and their progress becomes an operational imperative.  Twilio provides all the necessary building blocks to build a contact center (https://github.com/nash-md/twilio-contact-center) and the ability to build a realtime task monitoring dashboard using Twilio Sync (https://www.twilio.com/sync).
 
 This demo shows how an operational monitoring dashboard could be built.  I've used the following technologies to built this dashboard:
 
 ## Technologies
-a) Twilio TaskRouter (https://www.twilio.com/taskrouter)
-b) Twilio Sync (https://www.twilio.com/sync)
-c) Server side app using Python and Twilio REST APIs (TaskRouter, Sync)
-d) Dashboard app components:
+1) Twilio TaskRouter (https://www.twilio.com/taskrouter)
+2) Twilio Sync (https://www.twilio.com/sync)
+3) Server side app using Python and Twilio REST APIs (TaskRouter, Sync)
+4) Dashboard app components:
   1) Javascript framework Vue.js (https://vuejs.org)
   2) UI framework Semantic-ui (https://semantic-ui.com)
   3) Twilio Sync JS SDK (https://www.twilio.com/docs/api/sync/quickstart-js)
