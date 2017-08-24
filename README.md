@@ -1,2 +1,2 @@
 # twilio-taskrouter-realtime-dashboard
-Twilio TaskRouter Realtime Dashboard using Sync
+Twilio TaskRouter Realtime Dashboard using Twilio Sync 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Twilio Real-Time TaskRouter Dashboard">
+        <meta name="author" content="Ameer Badri, Twilio">
+        <title>Twilio TaskRouter Dashboard</title>
+        <!--  <link href="style.css" rel="stylesheet"> -->
+        <!-- import CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
+        <link rel="stylesheet" href="/static/taskrouter_dashboard.css"/>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+    <body style="">
+        <div class="ui four column doubling fluid container" title="TaskRouter Dashboard">
+            <div id="taskrouterDashboard" v-cloak>
+              <div class="ui clearing segment v-cloak--hidden">
+                <h4 class="ui left floated header">
+                  <img src="/images/taskrouter-logo.png" class="ui middle aligned image">
+                  {{eventType}}
+                </h4>
+                <h3 class="ui right floated header">
+                  <img src="/images/twilio-mark-red.png" class="ui middle aligned image">
+                  {{headerMessage}}
+                  <p>US: +1-650-229-5161 UK: +44-133-240-2471</p>
+                </h3>
+              </div>
+
+              <div class="ui grid v-cloak--hidden">
+                <div class="three wide left aligned column">
+                    <div class="ui mini statistic segment">
+                      <div class="ui top attached label" v-bind:class="{'red': missedSLA, 'green': withinSLA}"> SLA</div>
+                      <div class="value">
+                        {{avgTaskAcceptanceTime}}
+                      </div>
+                      <div class="label">
+                        Acceptance Time (sec)
+                      </div>
+                    </div>
+                </div>
+                <div class="eight wide center aligned column">
+                    <div class="ui mini black statistic segment">
+                      <div class="ui top attached label">Tasks</div>
+                      <div class="value">
+                        {{currentTaskStatus['pending']}}
+                      </div>
+                      <div class="label">
+                        Created
+                      </div>
+                    </div>
+                    <div class="ui mini yellow statistic segment">
+                      <div class="ui top attached label">Tasks</div>
+                      <div class="value">
+                        {{currentTaskStatus['reserved']}}
+                      </div>
+                      <div class="label">
+                        Reserved
+                      </div>
+                    </div>
+                    <div class="ui mini green statistic segment">
+                      <div class="ui top attached label">Tasks</div>
+                      <div class="value">
+                        {{currentTaskStatus['assigned']}}
+                      </div>
+                      <div class="label">
+                        In-Progress
+                      </div>
+                    </div>
+                    <div class="ui mini blue statistic segment">
+                      <div class="ui top attached label">Tasks</div>
+                      <div class="value">
+                        {{currentTaskStatus['completed']}}
+                      </div>
+                      <div class="label">
+                        Completed
+                      </div>
+                    </div>
+                    <div class="ui mini red statistic segment">
+                      <div class="ui top attached label">Tasks</div>
+                      <div class="value">
+                        {{currentTaskStatus['canceled']}}
+                      </div>
+                      <div class="label">
+                        Canceled
+                      </div>
+                    </div>
+                </div>
+                <div class="five wide right aligned column">
+                    <div class="ui mini black statistic segment">
+                      <div class="ui top attached label">Agents</div>
+                      <div class="value">
+                        {{currentWorkerActivity['idleWorkers']}}
+                      </div>
+                      <div class="label">
+                        Available
+                      </div>
+                    </div>
+                    <div class="ui mini yellow statistic segment">
+                      <div class="ui top attached label">Agents</div>
+                      <div class="value">
+                        {{currentWorkerActivity['reservedWorkers']}}
+                      </div>
+                      <div class="label">
+                        Reserved
+                      </div>
+                    </div>
+                    <div class="ui mini red statistic segment">
+                      <div class="ui top attached label">Agents</div>
+                      <div class="value">
+                        {{currentWorkerActivity['busyWorkers']}}
+                      </div>
+                      <div class="label">
+                        Un-Available
+                      </div>
+                    </div>
+              </div>
+            </div>
+
+              <table class="ui selectable celled table v-cloak--hidden">
+                <thead>
+                  <tr>
+                    <th class="center aligned">From</th>
+                    <th class="center aligned">Channel</th>
+                    <th class="center aligned">Team</th>
+                    <th class="center aligned">Agent</th>
+                    <th class="center aligned">Priority</th>
+                    <th class="center aligned">Task Status</th>
+                    <th class="center aligned">Recording</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="task,id of taskList">
+                      <td>{{task.from}}</td>
+                      <td class="center aligned">
+                        <img v-if="task.channel == 'Phone'" class="ui centered middle aligned mini image" src="/static/images/phone.png">
+                        <img v-else-if="task.channel == 'Chat'" class="ui centered middle aligned mini image" src="/static/images/chat.png">
+                        <img v-else-if="task.channel == 'Video'" class="ui centered middle aligned mini image" src="/static/images/video.png">
+                        <div v-else>
+                          {{task.channel}}
+                        </div>
+                      </td>
+                      <td>{{task.team}}</td>
+                      <td>{{task.agentName}}</td>
+                      <td class="center aligned">{{task.priority}}</td>
+                      <td>
+                        <el-steps :space="100" :active=taskCurrentStep(task.taskStatus) title="Task Status">
+                            <el-step title="Created"></el-step>
+                            <el-step title="Reserved"></el-step>
+                            <el-step title="In-Progress"></el-step>
+                            <el-step :status="task.successStatus" title="Completed"></el-step>
+                            <el-step v-if="task.taskStatus == 'canceled'"  :status="task.cancelStatus" title="Canceled"></el-step>
+                        </el-steps>
+                      </td>
+                      <td class="center aligned">
+                          <audio ref="callRecording" :src="task.recordingUrl"></audio>
+                        <div v-if="displayRecording(task)">
+                          <button class="ui small icon button" v-on:click="playAudio(id)" data-tooltip="Call Recording (via recording callback)" data-position="top right" data-inverted="" >
+                            <i class="small play icon"></i>
+                          </button>
+                          <button class="ui small icon button" v-on:click="pauseAudio(id)">
+                            <i class="small pause icon"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            <!-- <div>
+                <p><pre>data: {{$data}}</pre></p>
+            </div> -->
+          </div>
+        </div>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+        <script src="https://media.twiliocdn.com/sdk/js/sync/releases/0.5.10/twilio-sync.js"></script>
+        <script src="static/taskrouter_dashboard.js"></script>
+    </body>
+</html>
