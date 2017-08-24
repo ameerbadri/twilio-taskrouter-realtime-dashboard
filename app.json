@@ -1,5 +1,5 @@
 {
-  "name": "Twilio Real-Time TaskRouter Dashboard",
+  "name": "Realtime TaskRouter Dashboard",
   "description": "Real-time TaskRouter statistics dashboard using Sync",
   "repository": "https://github.com/ameerbadri/twilio-taskrouter-realtime-dashboard",
   "logo": "https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png",
