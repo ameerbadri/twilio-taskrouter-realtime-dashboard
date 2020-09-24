@@ -6,7 +6,7 @@ gunicorn==19.7.1
 idna==2.5
 itsdangerous==0.24
 Jinja2>=2.10.1
-MarkupSafe==1.0
+MarkupSafe==1.1.1
 PyJWT==1.5.0
 PySocks==1.6.7
 pytz==2017.2
